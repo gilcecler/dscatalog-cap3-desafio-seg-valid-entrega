@@ -2,6 +2,7 @@ package com.devsuperior.demo.controllers;
 
 import com.devsuperior.demo.services.CityService;
 import com.devsuperior.demo.dto.CityDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class CityController {
     }
 
     @PostMapping
-    public ResponseEntity<CityDTO> insert(@RequestBody CityDTO cityDTO) {
+    public ResponseEntity<CityDTO> insert(@Valid @RequestBody CityDTO cityDTO) {
         cityDTO = service.insert(cityDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(cityDTO.getId()).toUri();

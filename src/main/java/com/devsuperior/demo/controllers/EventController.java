@@ -2,6 +2,7 @@ package com.devsuperior.demo.controllers;
 
 import com.devsuperior.demo.services.EventService;
 import com.devsuperior.demo.dto.EventDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,8 +25,8 @@ public class EventController {
         return ResponseEntity.ok().body(list);
     }
 
-    @PostMapping                         //@Valid
-    public ResponseEntity<EventDTO> insert(@RequestBody EventDTO dto) {
+    @PostMapping
+    public ResponseEntity<EventDTO> insert(@Valid @RequestBody EventDTO dto) {
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
@@ -33,7 +34,7 @@ public class EventController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<EventDTO> update(@PathVariable Long id, @RequestBody EventDTO dto) {
+    public ResponseEntity<EventDTO> update(@Valid @PathVariable Long id, @RequestBody EventDTO dto) {
         dto = service.update(id, dto);
         return ResponseEntity.ok().body(dto);
     }

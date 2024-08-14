@@ -3,13 +3,20 @@ package com.devsuperior.demo.dto;
 import java.time.LocalDate;
 
 import com.devsuperior.demo.entities.Event;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 
 public class EventDTO {
 	
 	private Long id;
+	@NotBlank(message = "Nome não pode ser vazio")
 	private String name;
+	@FutureOrPresent(message = "Data não pode ser passada")
 	private LocalDate date;
 	private String url;
+	@NotNull(message = "Cidade não pode ser nula")
 	private Long cityId;
 	
 	public EventDTO() {
