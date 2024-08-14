@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
+//@Configuration
+/* deixei aqui com exemplo para usar em outro projeto
 public class SecurityConfig {
 
     @Bean
@@ -15,4 +16,4 @@ public class SecurityConfig {
         return http.build();
     }
 
-}
+}**/
