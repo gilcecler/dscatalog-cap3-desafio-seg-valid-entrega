@@ -5,6 +5,7 @@ import com.devsuperior.demo.dto.CityDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -22,7 +23,7 @@ public class CityController {
         List<CityDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<CityDTO> insert(@Valid @RequestBody CityDTO cityDTO) {
         cityDTO = service.insert(cityDTO);
@@ -30,7 +31,7 @@ public class CityController {
                 .buildAndExpand(cityDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(cityDTO);
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
