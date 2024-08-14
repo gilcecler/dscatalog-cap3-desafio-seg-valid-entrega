@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 public class CityDTO {
 	
 	private Long id;
-	@NotBlank(message = "Nome não pode ser vazio")
+	@NotBlank(message = "Campo requerido")
 	private String name;
 	
 	public CityDTO() {
