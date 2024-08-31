@@ -6,5 +6,5 @@
 
 
 ###  Aprovação
-<img src="desafio-tdd-modulo02-expert.png" alt="desafio-tdd">
+<img src="image.png" alt="desafio-validacao">
 
